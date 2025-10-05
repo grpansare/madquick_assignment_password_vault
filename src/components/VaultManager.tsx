@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { VaultItem } from '@/types';
-import { encryptData, decryptData, generateSalt, deriveKeyFromPassword } from '@/lib/encryption';
+import { encryptData, decryptData, generateSalt, deriveKeyFromPassword } from '@/lib/simple-crypto';
 import { Plus, Search, Edit, Trash2, Copy, Eye, EyeOff, ExternalLink } from 'lucide-react';
 import toast from 'react-hot-toast';
 import VaultItemForm from './VaultItemForm';

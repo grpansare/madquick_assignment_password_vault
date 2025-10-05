@@ -9,30 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.0.3",
-    "react": "^18",
-    "react-dom": "^18",
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "mongodb": "^6.3.0",
-    "mongoose": "^8.0.3",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
+    "autoprefixer": "^10.0.1",
     "crypto-js": "^4.2.0",
-    "next-auth": "^4.24.5",
-    "tailwindcss": "^3.3.6",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.294.0",
-    "react-hot-toast": "^2.4.1"
+    "mongodb": "^6.3.0",
+    "next": "14.0.3",
+    "postcss": "^8",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/jsonwebtoken": "^9.0.5",
     "@types/crypto-js": "^4.2.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.3"
+    "@types/jsonwebtoken": "^9.0.5"
+  },
+  "browser": {
+    "crypto-js": "./node_modules/crypto-js/crypto-js.js"
   }
 }
