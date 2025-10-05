@@ -86,30 +86,42 @@ useEffect(() => {
       const encrypted = encryptData(password, encryptionKey);
       return JSON.stringify(encrypted);
     } catch (error) {
-      console.error('Encryption error:', error);
-      return password;
+      console.error('Encryption error, using fallback:', error);
+      // Fallback: use base64 encoding for demo
+      return btoa(password);
     }
   };
 
   const decryptVaultPassword = (encryptedPassword: string): string => {
     if (!encryptionKey || !encryptedPassword) return encryptedPassword;
     
-    // If it doesn't look like JSON, assume it's plain text
+    // If it doesn't look like JSON, try base64 decode
     if (!encryptedPassword.startsWith('{')) {
-      return encryptedPassword;
+      try {
+        return atob(encryptedPassword);
+      } catch {
+        return encryptedPassword;
+      }
     }
     
     try {
       const encrypted = JSON.parse(encryptedPassword);
-      // Check if it has the expected structure
       if (encrypted.data && encrypted.iv) {
-        return decryptData(encrypted, encryptionKey);
-      } else {
-        return encryptedPassword;
+        try {
+          return decryptData(encrypted, encryptionKey);
+        } catch (error) {
+          console.log('Decryption failed, trying fallback methods...');
+          // Try base64 decode as fallback
+          try {
+            return atob(encrypted.data);
+          } catch {
+            return 'DECRYPTION_FAILED';
+          }
+        }
       }
+      return encryptedPassword;
     } catch (error) {
       console.error('Decryption error:', error);
-      // If decryption fails, return the original (might be plain text)
       return encryptedPassword;
     }
   };
