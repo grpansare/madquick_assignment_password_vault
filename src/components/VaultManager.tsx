@@ -251,7 +251,7 @@ useEffect(() => {
           </div>
         </div>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredItems.map((item) => (
             <div key={item._id} className="card p-4">
               <div className="flex items-start justify-between mb-3">

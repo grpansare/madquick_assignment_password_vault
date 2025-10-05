@@ -47,49 +47,51 @@ const Dashboard: React.FC = () => {
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Shield className="h-5 w-5 text-white" />
-              </div>
-              <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-                SecureVault
-              </h1>
-            </div>
+        <div className="flex justify-between items-center h-14 sm:h-16">
+  <div className="flex items-center space-x-2 sm:space-x-3">
+    <div className="h-6 w-6 sm:h-8 sm:w-8 bg-blue-600 rounded-lg flex items-center justify-center">
+      <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+    </div>
+    <h1 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
+      SecureVault
+    </h1>
+  </div>
 
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600 dark:text-gray-400">
-                {user?.email}
-              </span>
-              
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                {darkMode ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </button>
+  <div className="flex items-center space-x-2 sm:space-x-4">
+  <span className="hidden sm:block text-sm text-gray-600 dark:text-gray-400 truncate max-w-[120px] lg:max-w-none">
+    {user?.email}
+  </span>
+  
+  <button
+    onClick={toggleDarkMode}
+    className="btn-icon text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+    title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+  >
+    {darkMode ? (
+      <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
+    ) : (
+      <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
+    )}
+  </button>
 
-              <button
-                onClick={handleLogout}
-                className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <LogOut className="h-4 w-4" />
-                <span>Logout</span>
-              </button>
-            </div>
+  <button
+    onClick={handleLogout}
+    className="btn-icon sm:flex sm:items-center sm:space-x-2 sm:px-3 sm:py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+    title="Logout"
+  >
+    <LogOut className="h-4 w-4" />
+    <span className="hidden sm:inline text-sm">Logout</span>
+  </button>
+</div>
           </div>
         </div>
       </header>
 
       {/* Navigation Tabs */}
-      <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8">
+      <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex space-x-0 sm:space-x-8">
+      {/* Mobile-friendly tab buttons */}
             <button
               onClick={() => setActiveTab('generator')}
               className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-200 ${
